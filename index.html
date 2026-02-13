@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffecd2, #fcb69f, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Falling Hearts Animation */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            top: -50px;
+        }
+
+        @keyframes fall {
+            to {
+                top: 110vh;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; font-size: 18px; }
+        .heart:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 40%; animation-duration: 9s; animation-delay: 1s; font-size: 20px; }
+        .heart:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 3s; }
+        .heart:nth-child(6) { left: 60%; animation-duration: 10s; animation-delay: 5s; font-size: 22px; }
+        .heart:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 0s; }
+        .heart:nth-child(8) { left: 80%; animation-duration: 9s; animation-delay: 2s; font-size: 19px; }
+        .heart:nth-child(9) { left: 90%; animation-duration: 11s; animation-delay: 4s; }
+        .heart:nth-child(10) { left: 15%; animation-duration: 12s; animation-delay: 6s; font-size: 21px; }
+
+        /* Glassmorphism Card */
+        .card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.37);
+            padding: 60px 50px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flower-accent {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #6c3053;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .success-message {
+            display: none;
+            font-size: 2rem;
+            color: #d63384;
+            font-weight: 600;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #d63384, #ff6b9d);
+            color: white;
+            animation: pulse 2s ease infinite;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .btn-yes:hover {
+            background: linear-gradient(135deg, #ff6b9d, #d63384);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.7);
+            color: #6c3053;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 40px 30px;
+            }
+            
+            .btn {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+
+            .flower-accent {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling Hearts -->
+    <div class="heart">💕</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">❤️</div>
+
+    <!-- Main Card -->
+    <div class="card">
+        <span class="flower-accent">🌹💐🌹</span>
+        <h1>Will you be my Valentine?</h1>
+        <p class="message">I promise to make this Valentine's Day as special as you are. Say yes and let's create beautiful memories together! 💕</p>
+        
+        <div class="buttons">
+            <button class="btn btn-yes" id="yesBtn">Yes! 💖</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+
+        <div class="success-message" id="successMsg">
+            Yay! See you on the 14th! ❤️<br>
+            <span style="font-size: 3rem; display: block; margin-top: 20px;">💕🎉💕</span>
+        </div>
+    </div>
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const successMsg = document.getElementById('successMsg');
+        const card = document.querySelector('.card');
+        const buttons = document.querySelector('.buttons');
+        const message = document.querySelector('.message');
+        const heading = document.querySelector('h1');
+        const flowerAccent = document.querySelector('.flower-accent');
+
+        // Yes Button - Confetti and Success
+        yesBtn.addEventListener('click', () => {
+            // Massive confetti explosion
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                confetti({
+                    ...defaults,
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#ff6b9d', '#d63384', '#ffc0cb', '#ff1493', '#ffffff']
+                });
+                confetti({
+                    ...defaults,
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#ff6b9d', '#d63384', '#ffc0cb', '#ff1493', '#ffffff']
+                });
+            }, 250);
+
+            // Show success message
+            heading.style.display = 'none';
+            message.style.display = 'none';
+            flowerAccent.style.display = 'none';
+            buttons.style.display = 'none';
+            successMsg.style.display = 'block';
+        });
+
+        // No Button - Runaway behavior
+        function moveNoButton() {
+            const cardRect = card.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Calculate safe boundaries within the viewport
+            const maxX = window.innerWidth - btnRect.width - 40;
+            const maxY = window.innerHeight - btnRect.height - 40;
+            const minX = 20;
+            const minY = 20;
+            
+            // Generate random position
+            const randomX = Math.random() * (maxX - minX) + minX;
+            const randomY = Math.random() * (maxY - minY) + minY;
+            
+            // Apply new position
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Move button on hover and click attempt
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Also handle touch events for mobile
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+    </script>
+</body>
+</html>
